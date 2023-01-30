@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kafene</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+        html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 22px 0 18px;
+  margin-right: 12px;
+  margin-left: 12px;
+  font-size: 0.875rem;
+  letter-spacing: 0.6px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 3px solid transparent;
+}
+
+.active {
+  border-bottom: 3px solid #20b883;
+  color: #20b883;
+}
+
+#nav {
+  padding: 0 48px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px #ccc;
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#log-wrapper {
+  width: 150px;
+  display: flex;
+  align-items: center;
+}
+
+#logo-img {
+  width: 24px;
+  height: 28px;
+  margin-right: 8px;
+}
+
+#logo-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  padding-right: 20px;
+}
+
+#logout-btn {
+  transform: translateX(700px);
+}
+#main {
+  background-color: #f6f7fb;
+}
+
+#order-section {
+  padding: 70px 100px;
+  min-height: 84vh;
+}
+
+#search-order-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+#order-section > h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#input-search {
+  width: 52%;
+  padding: 12px 24px;
+  font-size: 15px;
+  border: 0;
+  border-bottom: 2px solid #8c8c8c;
+  margin: 0 12px 0 0;
+  outline: none;
+}
+
+#reset-btn, #search-btn {
+    display: inline-block;
+    border-radius: 30px;
+    padding: 14px 36px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #20b883;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+#table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.table-heading {
+  padding-left: 20px;
+  padding-bottom: 15px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.order-item-wrapper {
+  background-color: white;
+  display: table-row;
+  margin: 0;
+  border-color: white;
+  border-bottom: 4px solid #f6f7fb;
+}
+
+.table-data {
+  background-color: #fff;
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  width: 135px;
+}
+
+.table-data-fade {
+  background-color: #fff;
+  text-align: left;
+  padding: 0 24px;
+  font-size: 14px;
+  color: #8c8c8c;
+  width: 100px;
+}
+
+.table-data > span {
+  color: #8c8c8c;
+  display: block;
+}
+    </style>
+
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/user.css" />
+  </head>
+  <body>
+    <header>
+      <nav id="nav">
+        <div id="log-wrapper">
+          <img
+            id="logo-img"
+            src="https://edu-web-fundamentals.web.app/static/media/logo.58169365.png"
+            alt="stylist k"
+          />
+          <p id="logo-text">Kafene</p>
+        </div>
+        <a class="nav-link" href="order.html">Orders</a>
+        <a class="nav-link" href="product.html">Products</a>
+        <a class="nav-link active" href="user.html">Users</a>
+        <a class="nav-link" id="logout-btn" href="index.html">Log Out</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section id="order-section">
+        <h1>Users</h1>
+        <div id="search-order-wrapper">
+          <form action="#" id="form-search">
+            <input id="input-search" type="search" placeholder="Search by Name">
+            <input id="search-btn" type="submit" value="Search">
+            <input id="reset-btn" type="reset" value="Reset">
+          </form>
+
+            <table id="table">
+              <tr class="table-heading-row">
+                <th class="table-heading">ID</th>
+                <th class="table-heading">User Avtar</th>
+                <th class="table-heading">Full Name</th>
+                <th class="table-heading">DoB</th>
+                <th class="table-heading">Gender</th>
+                <th class="table-heading">Current Location</th>
+              </tr>
+
+              <tbody id="table-body">
+                 
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+        $(document).ready(function () {
+  $("#form").submit(function (e) {
+    e.preventDefault();
+    var userName = $("#username").val();
+    var pass = $("#pass").val();
+
+    if (userName === pass) {
+      alert("Login successfuly!!");
+      var status = true;
+      localStorage.setItem("login-status", JSON.stringify(status));
+      location.assign("order.html");
+    } else {
+      alert("Please enter correct password!!");
+    }
+  });
+
+  $("#logout-btn").click(function () {
+    status = false;
+    localStorage.setItem("login-status", JSON.stringify(status));
+  });
+});
+$(document).ready(function () {
+  var orderCardBody = $("#table-body");
+
+  function createOrderCard(orderData) {
+    for (i = 0; i < orderData.length; i++) {
+      var tableRow = $("<tr>").addClass("order-item-wrapper");
+      var orderId = $("<td>").addClass("table-data-fade").text(orderData[i].id);
+      var userImg = $("<img>").attr({
+        src: orderData[i].profilePic,
+        alt: "profile pick",
+      });
+      var userAvtar = $("<td>").addClass("table-data").append(userImg);
+      var userName = $("<td>")
+        .addClass("table-data-fade")
+        .text(orderData[i].fullName);
+      var dateOfBirth = $("<td>").addClass("table-data").text(orderData[i].dob);
+      var gender = $("<td>")
+        .addClass("table-data-fade")
+        .text(orderData[i].gender);
+      var location = $("<td>")
+        .addClass("table-data-fade")
+        .text(orderData[i].currentCity + ", " + orderData[i].currentCountry);
+
+      tableRow.append(
+        orderId,
+        userAvtar,
+        userName,
+        dateOfBirth,
+        gender,
+        location
+      );
+      orderCardBody.append(tableRow);
+    }
+  }
+
+  $.get(
+    "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/users",
+    function (data) {
+      createOrderCard(data);
+    }
+  );
+
+  
+
+  $("#form-search").submit(function (e) {
+    e.preventDefault();
+    var searchBox = $("#input-search").val();
+
+    if(searchBox.length >= 2) {
+      $.get(
+        "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/users?fullName=" +
+          searchBox,
+        function (data) {
+          $("#table-body").html("")
+          createOrderCard(data);
+        }
+      );
+
+      $("#reset-btn").click(function() {
+        $("#table-body").html("")
+        $.get(
+            "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/users",
+            function (data) {
+              createOrderCard(data);
+            }
+          );
+      });
+    }else {
+      alert("Please enter atleast 2 characters!")
+    }
+  });
+
+});
+    </script>
+
+    <script src="js/index.js"></script>
+    <script src="js/user.js"></script>
+  </body>
+</html>
