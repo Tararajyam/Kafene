@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kafene</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jquery script -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/order.css" />
+    <style>
+        html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 22px 0 18px;
+  margin-right: 12px;
+  margin-left: 12px;
+  font-size: 0.875rem;
+  letter-spacing: 0.6px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 3px solid transparent;
+}
+
+.active {
+  border-bottom: 3px solid #20b883;
+  color: #20b883;
+}
+
+#nav {
+  padding: 0 48px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px #ccc;
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#log-wrapper {
+  width: 150px;
+  display: flex;
+  align-items: center;
+}
+
+#logo-img {
+  width: 24px;
+  height: 28px;
+  margin-right: 8px;
+}
+
+#logo-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  padding-right: 20px;
+}
+
+#logout-btn {
+  transform: translateX(700px);
+}
+#main {
+  background-color: #F6F7FB;
+}
+
+#order-section {
+    padding: 70px 100px;
+    min-height: 84vh;
+}
+
+#filter-order-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#order-section > h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#filter-item-wrapper {
+    width: 100%;
+    max-width: 15%;
+}
+
+#filter-item-wrapper > h3 {
+    margin-top: 0;
+}
+
+
+#filter-option-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-option-label {
+    margin: 6px 0;
+}
+
+#order-count {
+    margin-top: 0;
+}
+
+#table {
+    width: 86%;
+    border-collapse: collapse;
+    text-align: left;
+   
+}
+
+.table-heading {
+    padding-left: 20px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.order-item-wrapper {
+    background-color: white;
+    display: table-row;
+    margin: 0;
+    border-color: white;
+    border-bottom: 4px solid #f6f7fb;
+}
+
+.table-data {
+    background-color: #fff;
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    width: 135px;
+}
+
+.table-data-fade {
+    background-color: #fff;
+    text-align: left;
+    padding: 0 24px;
+    font-size: 14px;
+    color: #8c8c8c;
+    width: 100px;
+}
+
+.table-data>span {
+    color: #8c8c8c;
+    display: block;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="nav">
+        <div id="log-wrapper">
+          <img
+            id="logo-img"
+            src="https://edu-web-fundamentals.web.app/static/media/logo.58169365.png"
+            alt="stylist k"
+          />
+          <p id="logo-text">Kafene</p>
+        </div>
+        <a class="nav-link active" href="order.html">Orders</a>
+        <a class="nav-link" href="product.html">Products</a>
+        <a class="nav-link" href="user.html">Users</a>
+        <a class="nav-link" id="logout-btn" href="index.html">Log Out</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="order-section">
+        <h1>Orders</h1>
+        <div id="filter-order-wrapper">
+          <aside id="filter-item-wrapper">
+            <h3>Filters</h3>
+            <div id="filter-option-wrapper">
+              <p id="order-count">Count: 100</p>
+              <label class="filter-option-label"
+                ><input class="filter-opt-checkbox"
+                type="checkbox"
+                 name="order-new" 
+                 checked
+                 value="New"
+                  />New</label
+              >
+              <label class="filter-option-label"
+                ><input class="filter-opt-checkbox"
+                  type="checkbox"
+                  name="order-packed"
+                  checked
+                  value="Packed"
+                />Packed</label
+              >
+              <label class="filter-option-label"
+                ><input class="filter-opt-checkbox"
+                  type="checkbox"
+                  name="order-transit"
+                  checked
+                  value="InTransit"
+                />InTransit</label
+              >
+              <label class="filter-option-label"
+                ><input class="filter-opt-checkbox"
+                  type="checkbox"
+                  name="order-delivered"
+                  checked
+                  value="Delivered"
+                />Delivered</label
+              >
+            </div>
+          </aside>
+
+            <table id="table">
+              <tr class="table-heading-row">
+                <th class="table-heading">ID</th>
+                <th class="table-heading">Cusomer</th>
+                <th class="table-heading">Data</th>
+                <th class="table-heading">Amount</th>
+                <th class="table-heading">Status</th>
+              </tr>
+
+              <tbody id="table-body"></tbody> 
+
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+        $(document).ready(function () {
+  $("#form").submit(function (e) {
+    e.preventDefault();
+    var userName = $("#username").val();
+    var pass = $("#pass").val();
+
+    if (userName === pass) {
+      alert("Login successfuly!!");
+      var status = true;
+      localStorage.setItem("login-status", JSON.stringify(status));
+      location.assign("order.html");
+    } else {
+      alert("Please enter correct password!!");
+    }
+  });
+
+  $("#logout-btn").click(function () {
+    status = false;
+    localStorage.setItem("login-status", JSON.stringify(status));
+  });
+});
+
+$(document).ready(function () {
+  var orderCardBody = $("#table-body");
+
+  function createOrderCard(orderData) {
+    for (i = 0; i < orderData.length; i++) {
+      var tableRow = $("<tr>")
+        .addClass("order-item-wrapper")
+        .attr("id", orderData[i].orderStatus + "-" + i);
+      var orderId = $("<td>").addClass("table-data-fade").text(orderData[i].id);
+      var custName = $("<td>")
+        .addClass("table-data")
+        .text(orderData[i].customerName);
+      var orderTime = $("<td>")
+        .addClass("table-data")
+        .html(
+          `${orderData[i].orderDate} <span> ${orderData[i].orderTime}</span>`
+        );
+      var priceItem = $("<td>")
+        .addClass("table-data-fade")
+        .text("$" + orderData[i].amount);
+      var statusOrder = $("<td>")
+        .addClass("table-data")
+        .text(orderData[i].orderStatus);
+
+      tableRow.append(orderId, custName, orderTime, priceItem, statusOrder);
+      orderCardBody.append(tableRow);
+    }
+  }
+
+  $.get(
+    "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders",
+    function (data) {
+      createOrderCard(data);
+    }
+  );
+
+  $('input[type="checkbox"]').click(function () {
+    if ($(this).prop("checked") == true) {
+      for (let i = 0; i <= 100; i++) {
+        switch (this.value) {
+          case "New":
+            $("#New-" + i).css("display", "table-row");
+            break;
+          case "Packed":
+            $("#Packed-" + i).css("display", "table-row");
+            break;
+          case "InTransit":
+            $("#InTransit-" + i).css("display", "table-row");
+            break;
+          case "Delivered":
+            $("#Delivered-" + i).css("display", "table-row");
+            break;
+          default:
+            console.log("something wrong refresh the page");
+            break;
+        }
+      }
+    } else if ($(this).prop("checked") == false) {
+      for (let i = 0; i <= 100; i++) {
+        switch (this.value) {
+          case "New":
+            $("#New-" + i).css("display", "none");
+            break;
+          case "Packed":
+            $("#Packed-" + i).css("display", "none");
+            break;
+          case "InTransit":
+            $("#InTransit-" + i).css("display", "none");
+            break;
+          case "Delivered":
+            $("#Delivered-" + i).css("display", "none");
+            break;
+          default:
+            console.log("something wrong refresh the page");
+            break;
+        }
+      }
+    }
+
+    let count = [];
+    $(".order-item-wrapper").each(function () {
+      count.push($(this).css("display"));
+      let filterArr = count.filter((disVal) => disVal == "table-row");
+      $("#order-count").text("Count: " + filterArr.length);
+    });
+  });
+});
+    </script>
+
+    <script src="js/index.js"></script>
+    <script src="js/order.js"></script>
+  </body>
+</html>
